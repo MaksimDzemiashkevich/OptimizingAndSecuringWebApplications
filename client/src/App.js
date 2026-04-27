@@ -1,9 +1,15 @@
-import './App.css';
+import './css/App.css';
+import Content from './Layout/Content/Content';
+import Footer from './Layout/Footer/Footer';
+import Header from './Layout/Header/Header';
+import "./css/utilites.css";
 
 function App() {
   return (
-    <div className="App">
-
+    <div className="App flex column">
+      <Header></Header>
+      <Content></Content>
+      <Footer></Footer>
     </div>
   );
 }
