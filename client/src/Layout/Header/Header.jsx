@@ -6,10 +6,12 @@ import SearchAndBasket from "./Components/SearchAndBasket";
 
 const Header = () => {
     return (
-        <div className="Header flex items-center justify-between px-4">
-            <Logo></Logo>
-            <Categories></Categories>
-            <SearchAndBasket></SearchAndBasket>
+        <div className="Header">
+            <div className="flex items-center justify-between px-4 mx-auto max-w-7xl h-full">
+                <Logo></Logo>
+                <Categories></Categories>
+                <SearchAndBasket></SearchAndBasket>
+            </div>
         </div>
     )
 }
