@@ -6,12 +6,9 @@ import "./css/utilites.css";
 
 function App() {
   return (
-    <div className="App flex column">
+    <div className="App flex flex-col">
       <Header></Header>
       <Content></Content>
-      <div className="bg-red-500 text-white p-4">
-        TEST
-      </div>
       <Footer></Footer>
     </div>
   );
