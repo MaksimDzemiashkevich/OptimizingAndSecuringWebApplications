@@ -1,0 +1,59 @@
+/*.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.gap-1 {
+    gap: 10px;
+}
+
+.rounded-full {
+    border-radius: 3.40282e38px;
+}
+
+.orange {
+    background-color: #FF8C00;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.w-40 {
+    width: 40px;
+}
+
+.h-40{
+    height: 40px;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.m-1{
+    margin: 10px;
+}
+
+.white-text {
+    color: white;
+}
+
+.size-text-20{
+    font-size: 20px;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.font-sans{
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.font-bold{
+    font-weight: 600;
+}*/
