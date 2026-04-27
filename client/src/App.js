@@ -9,6 +9,9 @@ function App() {
     <div className="App flex column">
       <Header></Header>
       <Content></Content>
+      <div className="bg-red-500 text-white p-4">
+        TEST
+      </div>
       <Footer></Footer>
     </div>
   );
