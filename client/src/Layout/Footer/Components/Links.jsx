@@ -9,7 +9,7 @@
                     <p>Your trusted source for premium pet supplies and accessories.</p>
                 </div>
                 <div className="">
-                    <h3 class="font-semibold text-white mb-4">
+                    <h3 className="font-semibold text-white mb-4">
                         Quick Links
                     </h3>
                     <ul className="space-y-2">

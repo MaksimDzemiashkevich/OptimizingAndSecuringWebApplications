@@ -5,6 +5,11 @@ import Header from './Layout/Header/Header';
 import "./css/utilites.css";
 
 function App() {
+
+  const data = [
+    
+  ];
+
   return (
     <div className="App flex flex-col">
       <Header></Header>
