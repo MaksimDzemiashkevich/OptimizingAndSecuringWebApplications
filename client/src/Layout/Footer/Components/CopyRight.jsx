@@ -2,7 +2,7 @@ import React from "react";
 
 const CopyRight = () => {
     return (
-        <div className="flex justify-between text-gray-400">
+        <div className="flex justify-between text-gray-400 pt-8 border-t border-gray-800 flex-col items-center sm:flex-row">
             <span>
                 &copy; {new Date().getFullYear()} PawsStore. All rights reserved.
             </span>
