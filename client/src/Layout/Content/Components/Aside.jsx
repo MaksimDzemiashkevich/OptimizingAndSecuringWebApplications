@@ -1,6 +1,6 @@
 import React from "react";
 
-const Aside = () => {
+const Aside = ({ ratings, setRatings, toggleRating }) => {
     return (
         <aside className="hidden lg:block w-64 flex-shrink-0">
             <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
@@ -11,7 +11,7 @@ const Aside = () => {
 
                 <div className="space-y-6">
 
-                    
+
                     <div>
                         <h3 className="font-semibold text-gray-900 mb-4">
                             Rating
@@ -21,15 +21,17 @@ const Aside = () => {
 
                             {["5+ Stars", "4+ Stars", "3+ Stars"].map((label, index) => (
                                 <div key={index} className="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id={`${index}`}
-                                        className="w-4 h-4 accent-orange-500"
-                                    />
-                                    <label
-                                        htmlFor={`${index}`}
-                                        className="text-sm text-gray-700 cursor-pointer"
-                                    >
+
+                                    <button type="button" id={`${index}`} onClick={() => toggleRating(index)}
+                                        className={`w-4 h-4 rounded border ${ratings[index] ? "bg-black" : "bg-white border-gray-300"}`}>
+
+                                        {ratings[index] && (
+                                            <svg className="w-full h-full text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                    <label htmlFor={`${index}`} className="text-sm text-gray-700 cursor-pointer">
                                         {label}
                                     </label>
                                 </div>
@@ -38,7 +40,7 @@ const Aside = () => {
                         </div>
                     </div>
 
-                    
+
                     <div>
                         <h3 className="font-semibold text-gray-900 mb-4">
                             Price Range
