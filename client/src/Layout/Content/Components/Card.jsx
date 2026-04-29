@@ -36,11 +36,9 @@ const Card = ({ key, element }) => {
                             ))}
 
                             <span className="text-xs text-gray-600 ml-1">({element.rating})</span>
-
                         </div>
 
                         <div className="flex items-center justify-between">
-
                             <p className="text-xl font-bold text-orange-500">
                                 ${element.price}
                             </p>
@@ -60,7 +58,6 @@ const Card = ({ key, element }) => {
                             </button>
 
                         </div>
-
                     </div>
                 </div>
 
@@ -78,7 +75,6 @@ const Card = ({ key, element }) => {
                 </h3>
 
             </div>
-
         </a>
     )
 }

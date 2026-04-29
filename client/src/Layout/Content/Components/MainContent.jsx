@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useMemo} from "react";
 import Aside from "./Aside";
 import RightColumn from "./RightColumn";
+import { products } from "../../DataBase";
 
 const MainContent = () => {
 
@@ -10,6 +11,9 @@ const MainContent = () => {
         2: false
       });
 
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+    
+
     const toggleRating = (key) => {
         setRatings(prev => ({
             ...prev,
@@ -17,11 +21,23 @@ const MainContent = () => {
         }));
       };
 
+    const filteredProducts = useMemo(() => {
+        return products.filter(product => {
+            const matchesPrice = product.price >= priceRange.min && product.price <= priceRange.max;
+
+            const activeRatings = Object.entries(ratings).filter(([_, value]) => value).map(([key]) => 5 - parseInt(key));
+
+            const matchesRating = activeRatings.length === 0 || activeRatings.some(r => product.rating >= r);
+
+            return matchesPrice && matchesRating;
+        });
+    }, [ratings, priceRange]);
+
     return (
         <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row gap-8">
-                <Aside ratings={ratings} setRatings={setRatings} toggleRating={toggleRating}></Aside>
-                <RightColumn ratings={ratings} setRatings={setRatings} toggleRating={toggleRating}></RightColumn>
+                <Aside ratings={ratings} toggleRating={toggleRating} priceRange={priceRange} setPriceRange={setPriceRange}></Aside>
+                <RightColumn ratings={ratings} toggleRating={toggleRating} filteredProducts={filteredProducts} priceRange={priceRange} setPriceRange={setPriceRange}></RightColumn>
             </div>
         </div>
     )

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import SortComponent from "./SortComponent";
 import Cards from "./Cards";
 
-const RightColumn = ({ ratings, setRatings, toggleRating }) => {
+const RightColumn = ({ ratings, toggleRating, filteredProducts, priceRange, setPriceRange }) => {
 
     const [switchAside, setSwitchAside] = useState(false);
 
     return (
         <div className="flex-1">
-            <SortComponent switchAside={switchAside} setSwitchAside={setSwitchAside}></SortComponent>
+            <SortComponent switchAside={switchAside} setSwitchAside={setSwitchAside} filteredProducts={filteredProducts}></SortComponent>
             {switchAside && (
                 <div className="lg:hidden bg-white rounded-lg border border-gray-200 p-6 mb-6">
                     <div className="flex items-center justify-between mb-4">
@@ -60,7 +60,9 @@ const RightColumn = ({ ratings, setRatings, toggleRating }) => {
                                         </label>
                                         <div className="relative">
                                             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">$</span>
-                                            <input id="min-price-mob" type="number" min="0" placeholder="0" className="w-full
+                                            <input id="min-price-mob" type="number" value={priceRange.min}
+                                                onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))} 
+                                                min="0" placeholder="0" className="w-full
                                              pl-7 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none 
                                              focus:ring-2 focus:ring-orange-500 focus:border-transparent"/>
                                         </div>
@@ -74,7 +76,8 @@ const RightColumn = ({ ratings, setRatings, toggleRating }) => {
                                         </label>
                                         <div className="relative">
                                             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">$</span>
-                                            <input id="max-price-mob" type="number" min="0" placeholder="100"
+                                            <input id="max-price-mob" type="number" min="0" placeholder="100" value={priceRange.max} defaultValue={89.99}
+                                                onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
                                                 className="w-full pl-7 pr-3 py-2 text-sm border border-gray-300 rounded-lg
                                                  focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"/>
                                         </div>
@@ -85,7 +88,7 @@ const RightColumn = ({ ratings, setRatings, toggleRating }) => {
                     </div>
                 </div>
             )}
-            <Cards></Cards>
+            <Cards filteredProducts={filteredProducts}></Cards>
         </div>
     )
 }
