@@ -3,7 +3,7 @@ import Aside from "./Aside";
 import RightColumn from "./RightColumn";
 import { products } from "../../DataBase";
 
-const MainContent = () => {
+const MainContent = ({ addToCart }) => {
 
     const [ratings, setRatings] = useState({
         0: false,
@@ -43,11 +43,22 @@ const MainContent = () => {
         });
     }, [ratings, priceRange, sortBy]);
 
+    const allProps = {
+        ratings,
+        toggleRating,
+        filteredProducts,
+        priceRange,
+        setPriceRange,
+        sortBy,
+        setSortBy,
+        addToCart
+    };
+
     return (
         <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row gap-8">
                 <Aside ratings={ratings} toggleRating={toggleRating} priceRange={priceRange} setPriceRange={setPriceRange}></Aside>
-                <RightColumn ratings={ratings} toggleRating={toggleRating} filteredProducts={filteredProducts} priceRange={priceRange} setPriceRange={setPriceRange} sortBy={sortBy} setSortBy={setSortBy}></RightColumn>
+                <RightColumn {...allProps}></RightColumn>
             </div>
         </div>
     )

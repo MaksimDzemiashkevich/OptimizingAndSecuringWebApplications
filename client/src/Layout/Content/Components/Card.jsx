@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ key, element }) => {
+const Card = ({ key, element, addToCart }) => {
     return (
         <a href={`/product/${key}`}
             className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-orange-300 block">
@@ -46,8 +46,7 @@ const Card = ({ key, element }) => {
                             <button
                                 className="bg-orange-500 hover:bg-orange-600 text-white p-2.5 rounded-full shadow-md
                                  transition-all duration-200 hover:scale-110"
-                                aria-label="Add to cart"
-                            >
+                                aria-label="Add to cart" onClick={(e) => { e.preventDefault(); addToCart(element)}}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                                     className="lucide lucide-shopping-cart w-5 h-5">
