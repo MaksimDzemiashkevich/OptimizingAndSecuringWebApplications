@@ -2,7 +2,7 @@ import React from "react";
 import '../../css/Content.css'
 import MainContent from "./Components/MainContent";
 
-const Content = () => {
+const Content = ({addToCart}) => {
     return (
         <div className="content">
             <div className="bg-gradient-to-r from-orange-500 to-pink-500 py-16 px-7">
@@ -15,7 +15,7 @@ const Content = () => {
                     </span>
                 </div>
             </div>
-            <MainContent></MainContent>
+            <MainContent addToCart={addToCart}></MainContent>
         </div>
     )
 }

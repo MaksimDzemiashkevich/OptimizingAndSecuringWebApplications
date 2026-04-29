@@ -1,6 +1,6 @@
 import React from "react";
 
-const Aside = ({ ratings, setRatings, toggleRating }) => {
+const Aside = ({ ratings, toggleRating, priceRange, setPriceRange }) => {
     return (
         <aside className="hidden lg:block w-64 flex-shrink-0">
             <div className="bg-white rounded-lg border border-gray-200 p-6 sticky top-24">
@@ -54,13 +54,11 @@ const Aside = ({ ratings, setRatings, toggleRating }) => {
                                 </label>
 
                                 <div className="relative">
-                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                                        $
-                                    </span>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                                    <input type="number" min="0" value={priceRange.min}
+                                        onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                                        className="w-full pl-7 pr-3 py-2 border border-gray-300
+                                     rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                     />
                                 </div>
                             </div>
@@ -73,14 +71,11 @@ const Aside = ({ ratings, setRatings, toggleRating }) => {
                                 </label>
 
                                 <div className="relative">
-                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
-                                        $
-                                    </span>
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        defaultValue={89.99}
-                                        className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                                    <input type="number" min="0" value={priceRange.max} defaultValue={89.99}
+                                        onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                                        className="w-full pl-7 pr-3 py-2 border
+                                     border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                     />
                                 </div>
                             </div>
