@@ -14,6 +14,7 @@ const SearchAndBasket = ({ switchHamburger, setSwitchHanmburger }) => {
                     <path d="m21 21-4.3-4.3"></path>
                 </svg>
             </button>
+
             <a href="/" className="hover:bg-gray-100 rounded-full transition-colors w-10 h-10 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -22,7 +23,10 @@ const SearchAndBasket = ({ switchHamburger, setSwitchHanmburger }) => {
                     <circle cx="19" cy="21" r="1"></circle>
                     <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
                 </svg>
+                <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center 
+                justify-center">{}</span>
             </a>
+
             <button className="lg:hidden w-10 h-10 justify-center items-center flex" onClick={() => { setSwitchHanmburger(switchHamburger => !switchHamburger) }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"

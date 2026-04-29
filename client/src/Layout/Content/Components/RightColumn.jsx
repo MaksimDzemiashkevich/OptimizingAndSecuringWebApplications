@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import SortComponent from "./SortComponent";
 import Cards from "./Cards";
 
-const RightColumn = ({ ratings, toggleRating, filteredProducts, priceRange, setPriceRange }) => {
+const RightColumn = ({ ratings, toggleRating, filteredProducts, priceRange, setPriceRange, sortBy, setSortBy }) => {
 
     const [switchAside, setSwitchAside] = useState(false);
 
     return (
         <div className="flex-1">
-            <SortComponent switchAside={switchAside} setSwitchAside={setSwitchAside} filteredProducts={filteredProducts}></SortComponent>
+            <SortComponent switchAside={switchAside} setSwitchAside={setSwitchAside} filteredProducts={filteredProducts} sortBy={sortBy} setSortBy={setSortBy}></SortComponent>
             {switchAside && (
                 <div className="lg:hidden bg-white rounded-lg border border-gray-200 p-6 mb-6">
                     <div className="flex items-center justify-between mb-4">

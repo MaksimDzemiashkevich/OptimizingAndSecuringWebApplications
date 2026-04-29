@@ -12,7 +12,7 @@ const MainContent = () => {
       });
 
     const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
-    
+    const [sortBy, setSortBy] = useState("name-asc");
 
     const toggleRating = (key) => {
         setRatings(prev => ({
@@ -22,7 +22,7 @@ const MainContent = () => {
       };
 
     const filteredProducts = useMemo(() => {
-        return products.filter(product => {
+        let result = products.filter(product => {
             const matchesPrice = product.price >= priceRange.min && product.price <= priceRange.max;
 
             const activeRatings = Object.entries(ratings).filter(([_, value]) => value).map(([key]) => 5 - parseInt(key));
@@ -31,13 +31,23 @@ const MainContent = () => {
 
             return matchesPrice && matchesRating;
         });
-    }, [ratings, priceRange]);
+
+        return [...result].sort((a, b) => {
+            switch (sortBy) {
+                case "price-asc": return a.price - b.price;
+                case "price-desc": return b.price - a.price;
+                case "name-asc": return a.title.localeCompare(b.title);
+                case "name-desc": return b.title.localeCompare(a.title);
+                default: return 0;
+            }
+        });
+    }, [ratings, priceRange, sortBy]);
 
     return (
         <div className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col lg:flex-row gap-8">
                 <Aside ratings={ratings} toggleRating={toggleRating} priceRange={priceRange} setPriceRange={setPriceRange}></Aside>
-                <RightColumn ratings={ratings} toggleRating={toggleRating} filteredProducts={filteredProducts} priceRange={priceRange} setPriceRange={setPriceRange}></RightColumn>
+                <RightColumn ratings={ratings} toggleRating={toggleRating} filteredProducts={filteredProducts} priceRange={priceRange} setPriceRange={setPriceRange} sortBy={sortBy} setSortBy={setSortBy}></RightColumn>
             </div>
         </div>
     )
